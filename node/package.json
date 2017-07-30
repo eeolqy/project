@@ -1,0 +1,25 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "熟悉node的语法",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "babel-node  test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eeolqy/node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eeolqy/node/issues"
+  },
+  "homepage": "https://github.com/eeolqy/node#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "fs": "^0.0.1-security"
+  }
+}
