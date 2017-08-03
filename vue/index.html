@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+</head>
+<body>
+  <div id="app" style="text-align: center;">
+  {{checkedCities}}
+  <br>
+  {{list}}
+  <br>
+  {{sum}}
+  <br>
+  {{filter}}
+   <br>
+    <el-popover
+    placement="bottom"
+    width="200"
+    @hide="hide"
+    trigger="click">
+    <div>
+      <el-input
+        placeholder="请选择日期"
+        icon="search"
+        v-model="input2"
+
+        >
+      </el-input>
+      <el-checkbox  v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+  <div style="margin: 15px 0;"></div>
+    <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+        <el-checkbox v-for="city in list" style="display:block;" :label="city" :key="city">{{city}}</el-checkbox>
+    </el-checkbox-group>
+    </div>
+    <el-button slot="reference">激活</el-button>
+  </div>
+</body>
+  <!-- 先引入 Vue -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { 
+          visible: false,
+           input2:'',
+           checkAll: true,
+          checkedCities:['上海11', '北京12','上海3', '北京4','上海5', '北京6','上海7', '北京8'],
+          cities: ['上海11', '北京12','上海3', '北京4','上海5', '北京6','上海7', '北京8'],
+          filter:[],
+          a:false
+         }
+      },
+      watch:{
+        input2(){
+          this.a = true
+          this.filter = this.cities.filter((item)=>{
+              console.log(this.input2,item)
+              return item.indexOf(this.input2)>-1
+          })
+        },
+      },
+      computed:{
+        list(){
+          if(this.a){
+            return this.filter
+          }else{
+            return this.cities
+          }
+        },
+        sum(){
+          return this.checkedCities.length
+        },
+        bbbb(){
+          return this.list
+        }
+      },
+      methods:{
+         handleCheckAllChange(event) {
+          if(this.checkAll){
+            if(this.a){
+              this.list.map((item)=>{
+                if(this.checkedCities.indexOf(item)==-1){
+                  this.checkedCities.push(item)
+                }
+              })
+            }else{
+              this.checkedCities=this.cities
+            }
+          }else{
+            if(this.a){
+                this.checkedCities = this.checkedCities.filter((item)=>{
+                  return this.list.indexOf(item)==-1
+                })
+            }else{
+              this.checkedCities=[]
+            }
+          }
+          
+      },
+      handleCheckedCitiesChange(value) {
+        console.log(value)
+        let checkedCount = value.length;
+        this.checkAll = checkedCount === this.cities.length;
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+      },
+      hide(){
+        this.a = false
+        this.input2 = ''
+      }
+      }
+    })
+  </script>
+</html>
