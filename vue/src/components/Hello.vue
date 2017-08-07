@@ -59,7 +59,7 @@ export default {
       //num.v=3
     },
     formatter(h,{column,$index}){
-      console.log(h)
+      //console.log(h)
     //  return h('div',{
 
     //       },[
@@ -98,7 +98,7 @@ export default {
       children.push(h('p', {})) //组件3
       return h('div', {},children)
     }
-  } 
+  }
 }
 </script>
 
