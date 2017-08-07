@@ -2,8 +2,7 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <router-view></router-view>
-    {{num}}
-    <Hello v-model="num"></Hello>
+    <!-- <Hello v-model="num"></Hello> -->
   </div>
 </template>
 
