@@ -48,7 +48,7 @@
 			insertScriptTag(){
 				console.log(this.config.path)
 				var script = document.createElement('script')
-				script.src="/static/lib/echarts.min.js"
+				script.src="../project/common/echarts.min.js"
 				document.body.appendChild(script)
 				if(script.loaded){
 					this.scriptTagStatus+=1;

@@ -321,7 +321,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			console.log(this.config.path);
 			var script = document.createElement('script');
-			script.src = "/static/lib/echarts.min.js";
+			script.src = "../project/common/echarts.min.js";
 			document.body.appendChild(script);
 			if (script.loaded) {
 				this.scriptTagStatus += 1;
@@ -625,4 +625,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ })
 
 },[56]);
-//# sourceMappingURL=app.f9a613b4bbb9faf09c9e.js.map
+//# sourceMappingURL=app.c910b81753074ccef63b.js.map
