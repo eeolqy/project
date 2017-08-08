@@ -20,15 +20,17 @@
 		watch:{
 			option:{
 				handler(newValue){
-					console.log(this)
-					this.echarts.hideLoading()
-					this.echarts.setOption(this.option)
+					this.echarts.setOption(newValue)
 				},
 				deep:true
 			},
 			config:{
 				handler(newValue){
-
+					if(newValue.loading){
+						this.echarts.hideLoading()
+					}else{
+						this.echarts.showLoading()
+					}
 				},
 				deep:true
 			}
@@ -40,9 +42,11 @@
 		    } else {
 			 	this.insertScriptTag();
 		    }
+			console.log(this)
 		},
 		methods:{
 			insertScriptTag(){
+				console.log(this.config.path)
 				var script = document.createElement('script')
 				script.src="/static/lib/echarts.min.js"
 				document.body.appendChild(script)
