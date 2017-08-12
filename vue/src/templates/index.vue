@@ -3,15 +3,9 @@
         position:relative;
         width:100%;
         height:100%;
-        .index-header{
-            height:50px;
-            position:absolute;
-            left:0;
-            right:0;
-        }
         .index-content{
             position:absolute;
-            top:50px;
+            top:60px;
             bottom:0;
             left:0;
             right:0;
@@ -21,6 +15,7 @@
                 top:0px;
                 bottom:0;
                 width:200px;
+                background:#EFF2F7
             }
             .index-content-right{
                 position:absolute;
@@ -35,7 +30,7 @@
 
 <template>
     <div class="index">
-        <header class="index-header"></header>
+        <index-header></index-header>
         <div class="index-content">
             <div class="index-content-left">
                 <nav-menu :navMenuConfig="navMenuConfig"></nav-menu>
@@ -52,6 +47,7 @@
 <script type="text/javascript">
     import Echarts from '../components/echarts.vue'
     import NavMenu from '../components/nav_menu.vue'
+    import IndexHeader from '../components/header.vue'
     export default{
         name:'index',
         data(){
@@ -80,50 +76,50 @@
                 },
                 navMenuConfig:[
                     {
-                        lable:'',
-                        icon:'',
+                        lable:'Vue-Api',
+                        icon:'el-icon-menu',
                         children:[{
-                            lable:'',
+                            lable:'watch属性',
                             icon:'',
-                            path:{path:'/one'}
+                            path:'/watch',
                         },
                         {
                             lable:'',
                             icon:'',
-                            path:{path:'/two'}
+                            path:'/two',
                         }]
                     },
                     {
                         lable:'',
-                        icon:'',
+                        icon:'el-icon-menu',
                         children:[{
                             lable:'',
                             icon:'',
-                            path:{path:'/one'}
+                            path:'/one',
                         },
                         {
                             lable:'',
                             icon:'',
-                            path:{path:'/two'}
+                            path:'/two',
                         }]
                     },
                     {
                         lable:'',
-                        icon:'',
+                        icon:'el-icon-menu',
                         children:[{
                             lable:'',
                             icon:'',
-                            path:{path:'/one'}
+                            path:'/one',
                         },
                         {
                             lable:'',
                             icon:'',
-                            path:{path:'/two'}
+                            path:'/two',
                         },
                         {
                             lable:'',
                             icon:'',
-                            path:{path:'/two'}
+                            path:'/two',
                         }]
                     }
                 ]
@@ -136,7 +132,7 @@
             },2000)
         },
         components:{
-            Echarts,NavMenu
+            Echarts,NavMenu,IndexHeader
         },
         watch:{
             option(){
