@@ -1,12 +1,57 @@
-<template id="">
-    <div class="">
-        <echarts  :config="echartsConfig" :option="option"  @ready="initEcharts"></echarts>
-        <el-button @click="change">切换</el-button>
+<style lang="less">
+    .index{
+        position:relative;
+        width:100%;
+        height:100%;
+        .index-header{
+            height:50px;
+            position:absolute;
+            left:0;
+            right:0;
+        }
+        .index-content{
+            position:absolute;
+            top:50px;
+            bottom:0;
+            left:0;
+            right:0;
+            .index-content-left{
+                position:absolute;
+                left:0;
+                top:0px;
+                bottom:0;
+                width:200px;
+            }
+            .index-content-right{
+                position:absolute;
+                left:200px;
+                right:0;
+                bottom:0;
+                top:0;
+            }
+        }
+    }
+</style>
+
+<template>
+    <div class="index">
+        <header class="index-header"></header>
+        <div class="index-content">
+            <div class="index-content-left">
+                <nav-menu :navMenuConfig="navMenuConfig"></nav-menu>
+            </div>
+            <div class="index-content-right">
+                <router-view></router-view>
+            </div>
+        </div>
+        <!-- <echarts  :config="echartsConfig" :option="option"  @ready="initEcharts"></echarts> -->
+        <!-- <el-button @click="change">切换</el-button> -->
     </div>
 </template>
 
 <script type="text/javascript">
     import Echarts from '../components/echarts.vue'
+    import NavMenu from '../components/nav_menu.vue'
     export default{
         name:'index',
         data(){
@@ -32,7 +77,56 @@
                 echartsConfig:{
                     loading:false,
                     path:'../lib/echarts.min.js'
-                }
+                },
+                navMenuConfig:[
+                    {
+                        lable:'',
+                        icon:'',
+                        children:[{
+                            lable:'',
+                            icon:'',
+                            path:{path:'/one'}
+                        },
+                        {
+                            lable:'',
+                            icon:'',
+                            path:{path:'/two'}
+                        }]
+                    },
+                    {
+                        lable:'',
+                        icon:'',
+                        children:[{
+                            lable:'',
+                            icon:'',
+                            path:{path:'/one'}
+                        },
+                        {
+                            lable:'',
+                            icon:'',
+                            path:{path:'/two'}
+                        }]
+                    },
+                    {
+                        lable:'',
+                        icon:'',
+                        children:[{
+                            lable:'',
+                            icon:'',
+                            path:{path:'/one'}
+                        },
+                        {
+                            lable:'',
+                            icon:'',
+                            path:{path:'/two'}
+                        },
+                        {
+                            lable:'',
+                            icon:'',
+                            path:{path:'/two'}
+                        }]
+                    }
+                ]
             }
         },
         created(){
@@ -42,7 +136,7 @@
             },2000)
         },
         components:{
-            Echarts
+            Echarts,NavMenu
         },
         watch:{
             option(){
