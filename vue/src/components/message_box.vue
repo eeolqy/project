@@ -1,7 +1,8 @@
 <template>
-    <!-- Vue data 对象的深度观察 -->
     <div>
-
+        <el-button :plain="true" @click="error">错误显示</el-button>
+        <el-button :plain="true" @click="correct">正确显示</el-button>
+        <h3>Checkbox</h3>
     </div>
 </template>
 
@@ -15,7 +16,7 @@
                 },
                 b:{
                     a:{
-                        c:
+                        c:''
                     }
                 }
             }
@@ -27,10 +28,19 @@
             b(oldvalue,newValue){
                 console.log(oldvalue,newValue)
             }
+        },
+        methods:{
+            error(){
+                this.$message('错误的打开方式');
+            },
+            correct(){
+                console.log(this.$message.closeAll())
+                this.$message('正确的打开方式');
+            }
         }
     }
 </script>
 
 <style lang="less">
-
+    
 </style>

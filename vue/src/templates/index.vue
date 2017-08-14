@@ -23,6 +23,7 @@
                 right:0;
                 bottom:0;
                 top:0;
+                overflow:hidden;
             }
         }
     }
@@ -52,6 +53,7 @@
         name:'index',
         data(){
             return {
+                defaultActivePath:'/tableShowHide',
                 option:{
                     title: {
                         text: 'ECharts 入门示例'
@@ -72,21 +74,44 @@
                 },
                 echartsConfig:{
                     loading:false,
-                    path:'../lib/echarts.min.js'
+                    path:'/static/lib/echarts.min.js'
                 },
                 navMenuConfig:[
                     {
                         lable:'Vue-Api',
                         icon:'el-icon-menu',
                         children:[{
-                            lable:'watch属性',
-                            icon:'',
-                            path:'/watch',
+                            lable:'观察者',
+                            icon:'el-icon-minus',
+                            path:'/watchDeep',
                         },
                         {
-                            lable:'',
-                            icon:'',
-                            path:'/two',
+                            lable:'消息提示',
+                            icon:'el-icon-minus',
+                            path:'/messageBox',
+                        },
+                        {
+                            lable:'表格的显示和隐藏',
+                            icon:'el-icon-minus',
+                            path:'/tableShowHide',
+                        },
+                        {
+                            lable:'表格滚动条',
+                            icon:'el-icon-minus',
+                            path:'/tableScrollBar',
+                        },
+                        {
+                            lable:'Echarts',
+                            icon:'el-icon-minus',
+                            path:'/echarts',
+                        },{
+                            lable:'递归组件',
+                            icon:'el-icon-minus',
+                            path:'/echarts',
+                        },{
+                            lable:'模拟checkbox',
+                            icon:'el-icon-minus',
+                            path:'/echarts',
                         }]
                     },
                     {
@@ -94,12 +119,12 @@
                         icon:'el-icon-menu',
                         children:[{
                             lable:'',
-                            icon:'',
+                            icon:'el-icon-minus',
                             path:'/one',
                         },
                         {
                             lable:'',
-                            icon:'',
+                            icon:'el-icon-minus',
                             path:'/two',
                         }]
                     },

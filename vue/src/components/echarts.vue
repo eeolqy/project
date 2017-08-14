@@ -1,7 +1,6 @@
 <template>
 	<div>
-		{{option}}
-		<div ref="main" style="width:auto;height:400px;"></div>
+		<div :id="id" ref="main" style="width:auto;height:400px;"></div>
 	</div>
 </template>
 
@@ -12,7 +11,7 @@
 		props:['option','config'],
 		data(){
 			return {
-				message:'没有更新',
+				id:'echarts_' + (Math.random() * 100000000000000000),
 				echarts:null,
 				scriptTagStatus:0,
 			}
@@ -20,6 +19,7 @@
 		watch:{
 			option:{
 				handler(newValue){
+					console.log(22)
 					this.echarts.setOption(newValue)
 				},
 				deep:true
@@ -46,9 +46,9 @@
 		},
 		methods:{
 			insertScriptTag(){
-				console.log(this.config.path)
+				console.log(this)
 				var script = document.createElement('script')
-				script.src="../project/common/echarts.min.js"
+				script.src=this.config.path
 				document.body.appendChild(script)
 				if(script.loaded){
 					this.scriptTagStatus+=1;
@@ -71,7 +71,7 @@
 					})
 					let echartsWrapDom = this.$refs.main
 					this.echarts = window.echarts.init(echartsWrapDom)
-					console.log(this.echarts.showLoading())
+					this.echarts.showLoading()
 				  });
 				}
 
