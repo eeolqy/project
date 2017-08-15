@@ -9,6 +9,8 @@ import Two from '@/templates/two'
 // templates
 
 import Echarts from '@/templates/echarts'
+import Father  from '@/templates/father'
+import TreeFolder from '@/templates/tree_folder'
 // components
 import TableShowHide     from '@/components/table_show_hide'
 import TableScrollBar    from '@/components/table_scroll_bar'
@@ -45,6 +47,12 @@ export default new VueRouter({
       },{
           path:'/echarts',
           component:Echarts
+      },{
+          path:'/father',
+          component:Father
+      },{
+          path:'/treeFolder',
+          component:TreeFolder
       }]
     },
     {

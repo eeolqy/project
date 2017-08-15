@@ -3,6 +3,7 @@
         position:relative;
         width:100%;
         height:100%;
+        overflow-y: hidden;
         .index-content{
             position:absolute;
             top:60px;
@@ -107,11 +108,15 @@
                         },{
                             lable:'递归组件',
                             icon:'el-icon-minus',
-                            path:'/echarts',
+                            path:'/treeFolder',
                         },{
                             lable:'模拟checkbox',
                             icon:'el-icon-minus',
                             path:'/echarts',
+                        },{
+                            lable:'父子同步通信',
+                            icon:'el-icon-minus',
+                            path:'/father',
                         }]
                     },
                     {
