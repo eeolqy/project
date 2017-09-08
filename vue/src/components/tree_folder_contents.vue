@@ -1,8 +1,8 @@
 <template>
     <li>
         <span @click="toggle">
-            <i v-if="isFolder"  class="icon" :class="[open ? 'folder-open': 'folder']">111</i>
-            <i v-if="!isFolder" class="icon file-text">333</i>
+            <i v-if="isFolder" class="icon" :class="[open ? 'folder-open': 'folder']"></i>
+            <i v-if="!isFolder" class="icon file-text"></i>
             {{ model.menuName }}
         </span>
         <ul v-show="open" v-if="isFolder">
@@ -19,7 +19,7 @@
         data() {
             return {
                 open: false,
-                //isFolder: true
+                isFolder: true
             }
         },
         computed: {

@@ -10,13 +10,12 @@ import Two from '@/templates/two'
 
 import Echarts from '@/templates/echarts'
 import Father  from '@/templates/father'
-import TreeFolder from '@/templates/tree_folder'
+//import TreeFolder from '@/templates/tree_folder'
 // components
 import TableShowHide     from '@/components/table_show_hide'
 import TableScrollBar    from '@/components/table_scroll_bar'
 import WatchDeep         from '@/components/watch_deep'
 import MessageBox        from '@/components/message_box'
-console.log(VueRouter)
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -50,10 +49,12 @@ export default new VueRouter({
       },{
           path:'/father',
           component:Father
-      },{
-          path:'/treeFolder',
-          component:TreeFolder
-      }]
+      },
+    //   {
+    //       path:'/treeFolder',
+    //       component:TreeFolder
+    //   }
+  ]
     },
     {
         path:'/hello',
