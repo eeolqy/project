@@ -40,10 +40,27 @@
 	        </template>
 	      </el-table-column>
 	    </el-table>
-	    
-	     <!--<el-tooltip :disabled="disabled" content="点击关闭 tooltip 功能" placement="bottom" effect="light">
-		    <el-button @click="disabled = !disabled">点击{{disabled ? '开启' : '关闭'}} tooltip 功能</el-button>
-		  </el-tooltip>-->
+        <el-checkbox-group 
+            v-model="lang"
+            >
+            <el-checkbox v-for="(v,i) in langs" :label="v.value" v-on:click.native.prevent="doThat(i)" :key="i">{{v.lang}}</el-checkbox>
+        </el-checkbox-group>
+        <div v-for="(v,i) in langs" v-if="lang.indexOf(i)>-1" >
+            <el-input v-model="langs[i].inputTxt" placeholder="请输入内容"></el-input>
+        </div>
+        <el-dialog
+          title="提示"
+          :visible.sync="config.dialogVisible"
+          size="tiny"
+          >
+          <span>这是一段信息</span>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="config.dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="sure">确 定</el-button>
+          </span>
+        </el-dialog>
+
+
     </div>
 </template>
 
@@ -75,7 +92,25 @@
 		            date: '2016-05-03',
 		            name: '王小虎',
 		            address: '上海市普陀区金沙江路 1516 弄'
-		          }]
+		          }],
+                  langs:[{
+                    lang:'中文',
+                    value:0,
+                    inputTxt:''
+                  },{
+                    lang:'英文',
+                    value:1,
+                    inputTxt:''
+                  }],
+                  lang:[0],
+                  config:{
+                    dialogVisible:false,
+                    callback:{
+                        yes:function(){
+
+                        }
+                    }
+                  }
             }
         },
         watch:{
@@ -96,6 +131,72 @@
             }
         },
         methods:{
+            sure(){
+                this.config.dialogVisible  = false
+                this.config.callback.yes()
+            },
+            doThat(i){
+                if(this.langs[i].inputTxt!==''){
+                    this.config.dialogVisible = true
+                    this.cb(()=>{
+                        if(this.lang.indexOf(i)>-1){
+                             this.lang.map((la,li)=>{
+                                console.log(la,li)
+                                if(la==i){
+                                    this.lang.splice(li,1)
+                                    this.langs[li].inputTxt = ''
+                                }
+                             })
+                        }else{
+                            this.lang.push(i)
+                             this.langs[i].inputTxt = ''
+                        }
+                    })
+                }else{
+                    if(this.lang.indexOf(i)>-1){
+                         this.lang.map((la,li)=>{
+                            console.log(la,li)
+                            if(la==i){
+                                this.lang.splice(li,1)
+                                // break
+                            }
+                         })
+                    }else{
+                        this.lang.push(i)
+                    }
+                }
+
+
+                // if(this.lang.indexOf(i)>-1){
+                //      this.lang.map((la,li)=>{
+                //         console.log(la,li)
+                //         if(la==i){
+                //             this.lang.splice(li,1)
+                //             // break
+                //         }
+                //      })
+                // }else{
+                //     this.lang.push(i)
+                // }
+            },
+            cb(callback){
+                this.config.callback.yes = callback
+            },
+            setLang(i){
+                if(this.lang.indexOf(i)>-1){
+                     this.lang.map((la,li)=>{
+                        console.log(la,li)
+                        if(la==i){
+                            this.lang.splice(li,1)
+                            // break
+                            this.langs[li].inputTxt=''
+                        }
+                     })
+                }else{
+                    this.lang.push(i)
+                    this.langs[i].inputTxt=''
+                }
+            },
             changeB(){
                 this.b.b3='B3'
             },
